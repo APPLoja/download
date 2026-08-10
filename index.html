@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0f172a" />
+  <meta
+    name="description"
+    content="Baixe o instalador oficial do APPLoja para Windows."
+  />
+  <title>Download APPLoja</title>
+
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f8fafc;
+      --surface: #ffffff;
+      --surface-soft: #f1f5f9;
+      --text: #0f172a;
+      --muted: #64748b;
+      --border: #e2e8f0;
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --success: #16a34a;
+      --shadow: 0 24px 70px rgba(15, 23, 42, 0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 15% 10%, rgba(37, 99, 235, 0.13), transparent 28rem),
+        radial-gradient(circle at 90% 85%, rgba(22, 163, 74, 0.08), transparent 26rem),
+        var(--bg);
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .header {
+      width: min(1120px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 28px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      text-decoration: none;
+    }
+
+    .brand-mark {
+      width: 38px;
+      height: 38px;
+      border-radius: 11px;
+      display: grid;
+      place-items: center;
+      color: #fff;
+      background: linear-gradient(135deg, #2563eb, #0f172a);
+      box-shadow: 0 8px 24px rgba(37, 99, 235, 0.24);
+    }
+
+    .official {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .official-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--success);
+      box-shadow: 0 0 0 4px rgba(22, 163, 74, 0.12);
+    }
+
+    main {
+      flex: 1;
+      width: min(1120px, calc(100% - 40px));
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(340px, 0.95fr);
+      align-items: center;
+      gap: 70px;
+      padding: 72px 0 110px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      margin-bottom: 18px;
+      padding: 8px 12px;
+      border: 1px solid rgba(37, 99, 235, 0.18);
+      border-radius: 999px;
+      color: #1d4ed8;
+      background: rgba(239, 246, 255, 0.8);
+      font-size: 13px;
+      font-weight: 750;
+    }
+
+    h1 {
+      max-width: 680px;
+      margin: 0;
+      font-size: clamp(44px, 6vw, 72px);
+      line-height: 0.98;
+      letter-spacing: -0.055em;
+    }
+
+    .lead {
+      max-width: 620px;
+      margin: 26px 0 0;
+      color: #475569;
+      font-size: clamp(18px, 2vw, 21px);
+      line-height: 1.65;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 14px;
+      margin-top: 34px;
+    }
+
+    .download-button {
+      min-height: 58px;
+      padding: 0 24px;
+      border-radius: 14px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 11px;
+      color: #fff;
+      background: var(--primary);
+      box-shadow: 0 14px 30px rgba(37, 99, 235, 0.25);
+      font-size: 16px;
+      font-weight: 750;
+      text-decoration: none;
+      transition: transform 160ms ease, background 160ms ease, box-shadow 160ms ease;
+    }
+
+    .download-button:hover {
+      transform: translateY(-2px);
+      background: var(--primary-dark);
+      box-shadow: 0 18px 34px rgba(37, 99, 235, 0.3);
+    }
+
+    .download-button:focus-visible,
+    .help-link:focus-visible {
+      outline: 3px solid rgba(37, 99, 235, 0.32);
+      outline-offset: 4px;
+    }
+
+    .help-link {
+      padding: 12px 8px;
+      color: #475569;
+      font-size: 14px;
+      font-weight: 650;
+      text-underline-offset: 4px;
+    }
+
+    .fine-print {
+      margin: 17px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .download-card {
+      position: relative;
+      overflow: hidden;
+      padding: 30px;
+      border: 1px solid rgba(226, 232, 240, 0.9);
+      border-radius: 28px;
+      background: rgba(255, 255, 255, 0.92);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(18px);
+    }
+
+    .download-card::before {
+      content: "";
+      position: absolute;
+      width: 180px;
+      height: 180px;
+      top: -80px;
+      right: -70px;
+      border-radius: 50%;
+      background: rgba(37, 99, 235, 0.08);
+    }
+
+    .computer {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      margin-bottom: 30px;
+      border-radius: 18px;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      color: #fff;
+      background:
+        radial-gradient(circle at 76% 20%, rgba(59, 130, 246, 0.82), transparent 24%),
+        linear-gradient(145deg, #0f172a, #1e293b 55%, #1d4ed8);
+    }
+
+    .computer-logo {
+      width: 88px;
+      height: 88px;
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      border-radius: 24px;
+      display: grid;
+      place-items: center;
+      background: rgba(255, 255, 255, 0.1);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12);
+      font-size: 32px;
+      font-weight: 850;
+      letter-spacing: -0.08em;
+    }
+
+    .card-kicker {
+      margin: 0 0 8px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .card-title {
+      margin: 0;
+      font-size: 26px;
+      letter-spacing: -0.035em;
+    }
+
+    .file-row {
+      margin-top: 22px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .file-info {
+      min-width: 0;
+    }
+
+    .file-name {
+      display: block;
+      overflow: hidden;
+      color: #334155;
+      font-size: 14px;
+      font-weight: 700;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .file-type {
+      display: block;
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .windows-badge {
+      flex: 0 0 auto;
+      padding: 7px 10px;
+      border-radius: 9px;
+      color: #334155;
+      background: var(--surface-soft);
+      font-size: 12px;
+      font-weight: 750;
+    }
+
+    .steps {
+      width: min(1120px, calc(100% - 40px));
+      margin: -30px auto 90px;
+      padding: 28px 30px;
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      background: rgba(255, 255, 255, 0.72);
+    }
+
+    .steps h2 {
+      margin: 0 0 20px;
+      font-size: 18px;
+      letter-spacing: -0.02em;
+    }
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .step {
+      display: flex;
+      gap: 12px;
+      color: #475569;
+      font-size: 14px;
+      line-height: 1.55;
+    }
+
+    .step-number {
+      flex: 0 0 auto;
+      width: 28px;
+      height: 28px;
+      border-radius: 9px;
+      display: grid;
+      place-items: center;
+      color: #1d4ed8;
+      background: #eff6ff;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .footer {
+      border-top: 1px solid rgba(226, 232, 240, 0.85);
+    }
+
+    .footer-inner {
+      width: min(1120px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 24px 0 34px;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    @media (max-width: 860px) {
+      .header {
+        padding-top: 22px;
+      }
+
+      .official {
+        display: none;
+      }
+
+      main {
+        grid-template-columns: 1fr;
+        gap: 46px;
+        padding: 54px 0 82px;
+      }
+
+      .copy {
+        text-align: center;
+      }
+
+      .lead {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .actions {
+        justify-content: center;
+      }
+
+      .download-card {
+        width: min(520px, 100%);
+        margin: 0 auto;
+      }
+
+      .steps-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .header,
+      main,
+      .steps,
+      .footer-inner {
+        width: min(100% - 28px, 1120px);
+      }
+
+      main {
+        padding-top: 38px;
+      }
+
+      h1 {
+        font-size: 45px;
+      }
+
+      .lead {
+        font-size: 17px;
+      }
+
+      .actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .download-button {
+        width: 100%;
+      }
+
+      .help-link {
+        text-align: center;
+      }
+
+      .download-card {
+        padding: 20px;
+        border-radius: 22px;
+      }
+
+      .steps {
+        padding: 22px;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+    <header class="header">
+      <a class="brand" href="#" aria-label="APPLoja - Página inicial">
+        <span class="brand-mark" aria-hidden="true">A</span>
+        <span>APPLoja</span>
+      </a>
+
+      <div class="official" aria-label="Página oficial de download">
+        <span class="official-dot" aria-hidden="true"></span>
+        Download oficial
+      </div>
+    </header>
+
+    <main>
+      <section class="copy" aria-labelledby="page-title">
+        <div class="eyebrow">APPLoja para Windows</div>
+        <h1 id="page-title">Seu sistema APPLoja, pronto para instalar.</h1>
+        <p class="lead">
+          Faça o download do instalador do APPLoja e comece a usar o sistema no seu computador.
+        </p>
+
+        <div class="actions">
+          <a
+            class="download-button"
+            href="https://pub-5fdc0b8e0f164c71857e05a21018420f.r2.dev/apploja_setup.exe"
+            download="apploja_setup.exe"
+            aria-label="Baixar instalador do APPLoja para Windows"
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M12 3v12m0 0 4.5-4.5M12 15l-4.5-4.5M5 20h14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Baixar APPLoja
+          </a>
+
+          <a class="help-link" href="#como-instalar">Como instalar</a>
+        </div>
+
+        <p class="fine-print">
+          Arquivo executável para Windows. Ao concluir o download, abra o instalador e siga as instruções na tela.
+        </p>
+      </section>
+
+      <aside class="download-card" aria-label="Informações do instalador">
+        <div class="computer" aria-hidden="true">
+          <div class="computer-logo">AP</div>
+        </div>
+
+        <p class="card-kicker">Instalador oficial</p>
+        <h2 class="card-title">APPLoja Desktop</h2>
+
+        <div class="file-row">
+          <div class="file-info">
+            <span class="file-name">apploja_setup.exe</span>
+            <span class="file-type">Aplicativo para instalação</span>
+          </div>
+          <span class="windows-badge">Windows</span>
+        </div>
+      </aside>
+    </main>
+
+    <section class="steps" id="como-instalar" aria-labelledby="install-title">
+      <h2 id="install-title">Como instalar</h2>
+      <div class="steps-grid">
+        <div class="step">
+          <span class="step-number">1</span>
+          <span>Clique em <strong>Baixar APPLoja</strong> e aguarde o download terminar.</span>
+        </div>
+        <div class="step">
+          <span class="step-number">2</span>
+          <span>Abra o arquivo <strong>apploja_setup.exe</strong> que foi baixado.</span>
+        </div>
+        <div class="step">
+          <span class="step-number">3</span>
+          <span>Siga as etapas exibidas pelo instalador para concluir a configuração.</span>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        <span>© <span id="year"></span> APPLoja. Todos os direitos reservados.</span>
+        <span>Download oficial do APPLoja</span>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
