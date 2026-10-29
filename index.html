@@ -212,6 +212,26 @@
       box-shadow: 0 18px 34px rgba(37, 99, 235, 0.3);
     }
 
+    .button-beta {
+      color: #9a3412;
+      background: #fff7ed;
+      border: 1px solid #fdba74;
+      box-shadow: 0 8px 18px rgba(154, 52, 18, 0.07);
+    }
+
+    .button-beta:hover {
+      transform: translateY(-2px);
+      background: #ffedd5;
+      box-shadow: 0 12px 22px rgba(154, 52, 18, 0.12);
+    }
+
+    .beta-note {
+      margin: 10px 0 0;
+      color: #9a3412;
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
     .button-remote {
       color: #fff;
       background: var(--remote);
@@ -586,9 +606,16 @@
               Baixar APPLoja
             </a>
             <a class="help-link" href="#requisitos">Ver requisitos</a>
+            <a class="button button-beta" href="https://github.com/APPLoja/instalador-apploja-electron/releases/download/v0.2.1/APPLoja-Setup-0.2.1.exe" aria-label="Baixar APPLoja Beta versão 0.2.1 para Windows">
+              <svg width="19" height="19" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M12 3v12m0 0 4.5-4.5M12 15l-4.5-4.5M5 20h14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              Baixar Beta 0.2.1
+            </a>
           </div>
 
           <p class="fine-print">Arquivo executável para Windows. Ao concluir o download, abra o instalador e siga as instruções exibidas na tela.</p>
+          <p class="beta-note"><strong>Versão Beta:</strong> destinada a testes e sujeita a instabilidades. O instalador principal continua disponível acima.</p>
         </section>
 
         <aside class="download-card" aria-label="Informações do instalador">
