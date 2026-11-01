@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#0f172a" />
-  <meta name="description" content="Baixe o APPLoja Desktop, consulte os requisitos e faça o download do programa de acesso remoto utilizado pelo suporte APPLoja." />
+  <meta name="description" content="Baixe o APPLoja moderno para Windows, encontre a versão Access para compatibilidade e acesse ferramentas de suporte remoto." />
   <title>Downloads APPLoja</title>
   <style>
     :root {
@@ -126,6 +126,11 @@
       box-shadow: 0 7px 20px rgba(37, 99, 235, 0.2);
     }
 
+    .tab-button.access-tab[aria-selected="true"] {
+      background: #475569;
+      box-shadow: 0 7px 20px rgba(71, 85, 105, 0.2);
+    }
+
     .tab-button.remote-tab[aria-selected="true"] {
       background: var(--remote);
       box-shadow: 0 7px 20px rgba(15, 118, 110, 0.2);
@@ -154,6 +159,12 @@
       background: rgba(239, 246, 255, 0.8);
       font-size: 13px;
       font-weight: 750;
+    }
+
+    .eyebrow.legacy {
+      color: #475569;
+      border-color: #cbd5e1;
+      background: #f1f5f9;
     }
 
     .eyebrow.remote {
@@ -444,6 +455,19 @@
       line-height: 1.5;
     }
 
+    .legacy-notice {
+      max-width: 630px;
+      margin-top: 22px;
+      padding: 18px 20px;
+      border: 1px solid #cbd5e1;
+      border-radius: 16px;
+      color: #334155;
+      background: #f8fafc;
+    }
+
+    .legacy-notice strong { display: block; margin-bottom: 6px; }
+    .legacy-notice p { margin: 0; font-size: 14px; line-height: 1.6; }
+
     .office-box, .remote-notice {
       margin-top: 22px;
       padding: 22px;
@@ -561,7 +585,7 @@
       .header { padding-top: 18px; }
       .brand-logo { width: 42px; height: 42px; }
       .tabs { display: flex; width: 100%; }
-      .tab-button { flex: 1; padding: 0 10px; }
+      .tab-button { flex: 1; min-width: 0; padding: 10px 6px; font-size: 12px; line-height: 1.25; }
       main { padding-top: 34px; padding-bottom: 62px; }
       h1 { font-size: 44px; }
       .lead { font-size: 17px; }
@@ -592,7 +616,10 @@
         <button class="tab-button" id="tab-apploja" type="button" role="tab" aria-selected="true" aria-controls="panel-apploja" data-tab="apploja">
           APPLoja Desktop
         </button>
-        <button class="tab-button remote-tab" id="tab-remoto" type="button" role="tab" aria-selected="false" aria-controls="panel-remoto" data-tab="remoto">
+        <button class="tab-button access-tab" id="tab-access" type="button" role="tab" tabindex="-1" aria-selected="false" aria-controls="panel-access" data-tab="access">
+          Versão Access
+        </button>
+        <button class="tab-button remote-tab" id="tab-remoto" type="button" role="tab" tabindex="-1" aria-selected="false" aria-controls="panel-remoto" data-tab="remoto">
           Acesso remoto
         </button>
       </div>
@@ -601,19 +628,13 @@
     <div class="tab-panel" id="panel-apploja" role="tabpanel" aria-labelledby="tab-apploja">
       <main>
         <section class="copy" aria-labelledby="page-title">
-          <div class="eyebrow">APPLoja para Windows</div>
-          <h1 id="page-title">Seu sistema APPLoja, pronto para instalar.</h1>
+          <div class="eyebrow">APPLoja para Windows · Nova versão</div>
+          <h1 id="page-title">Conheça o APPLoja moderno.</h1>
           <p class="lead">
-            Faça o download do instalador do APPLoja Desktop e confira abaixo os programas necessários para o sistema funcionar corretamente.
+            Experimente a nova versão do APPLoja para Windows, com uma experiência renovada de gestão e vendas. Ela não precisa do Microsoft Access ou Excel para ser instalada.
           </p>
 
           <div class="actions">
-            <a class="button button-primary" href="https://pub-5fdc0b8e0f164c71857e05a21018420f.r2.dev/apploja_setup.exe" download="apploja_setup.exe" aria-label="Baixar instalador do APPLoja para Windows">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M12 3v12m0 0 4.5-4.5M12 15l-4.5-4.5M5 20h14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-              Baixar APPLoja
-            </a>
             <a class="button button-beta" href="https://github.com/APPLoja/instalador-apploja-electron/releases/download/v0.2.5/APPLoja-Setup-0.2.5.exe" aria-label="Baixar APPLoja Beta versão 0.2.5 para Windows">
               <svg width="19" height="19" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                 <path d="M12 3v12m0 0 4.5-4.5M12 15l-4.5-4.5M5 20h14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -622,36 +643,76 @@
             </a>
           </div>
 
-          <p class="fine-print">Arquivo executável para Windows. Ao concluir o download, abra o instalador e siga as instruções exibidas na tela. <a class="fine-link" href="#requisitos">Ver requisitos</a></p>
-          <p class="beta-note"><strong>Versão Beta:</strong> destinada a testes e sujeita a instabilidades. O instalador principal continua disponível acima.</p>
+          <p class="fine-print">Arquivo executável para Windows. Após o download, abra o instalador e siga as instruções exibidas na tela.</p>
+          <p class="beta-note"><strong>Versão Beta:</strong> está em fase de testes e pode apresentar instabilidades. Se você já utiliza o APPLoja clássico e deseja continuar com ele, acesse a aba <strong>Versão Access</strong>.</p>
         </section>
 
-        <aside class="download-card" aria-label="Informações do instalador">
+        <aside class="download-card" aria-label="Informações da nova versão">
           <div class="visual">
             <img class="visual-logo" src="assets/apploja-logo.png" alt="APPLoja" />
           </div>
-          <p class="card-kicker">Instalador oficial</p>
+          <p class="card-kicker">Nova versão para Windows · Beta</p>
           <h2 class="card-title">APPLoja Desktop</h2>
           <div class="file-row">
             <div>
-            
-              <span class="file-type">Aplicativo para instalação</span>
+              <span class="file-name">APPLoja-Setup-0.2.5.exe</span>
+              <span class="file-type">Aplicativo em testes · Sem dependência do Access</span>
+            </div>
+            <span class="windows-badge">Windows</span>
+          </div>
+        </aside>
+      </main>
+    </div>
+
+    <div class="tab-panel" id="panel-access" role="tabpanel" aria-labelledby="tab-access" hidden>
+      <main>
+        <section class="copy" aria-labelledby="access-title">
+          <div class="eyebrow legacy">Versão clássica · Compatibilidade</div>
+          <h1 id="access-title">Continue usando o APPLoja Access.</h1>
+          <p class="lead">
+            Esta é a versão anterior do APPLoja, mantida para compatibilidade com instalações existentes. É indicada a quem já utiliza o sistema e prefere continuar com ele ou não conseguiu utilizar a versão mais moderna em seu computador.
+          </p>
+          <div class="legacy-notice">
+            <strong>Versão legada: para clientes que já utilizam o Access</strong>
+            <p>Esta edição utiliza tecnologias anteriores e depende do Microsoft Access e, para determinadas funções, do Excel. Para conhecer a versão mais recente, atualmente em testes, consulte a aba APPLoja Desktop.</p>
+          </div>
+          <div class="actions">
+            <a class="button button-primary" href="https://pub-5fdc0b8e0f164c71857e05a21018420f.r2.dev/apploja_setup.exe" download="apploja_setup.exe" aria-label="Baixar instalador da versão Access do APPLoja para Windows">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M12 3v12m0 0 4.5-4.5M12 15l-4.5-4.5M5 20h14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              Baixar APPLoja Access
+            </a>
+          </div>
+          <p class="fine-print">Arquivo executável para Windows, destinado à versão clássica do sistema. <a class="fine-link" href="#requisitos-access">Confira os requisitos e o Office necessário</a>.</p>
+        </section>
+
+        <aside class="download-card" aria-label="Informações do instalador Access">
+          <div class="visual">
+            <img class="visual-logo" src="assets/apploja-logo.png" alt="APPLoja" />
+          </div>
+          <p class="card-kicker">Instalador da versão clássica</p>
+          <h2 class="card-title">APPLoja Access</h2>
+          <div class="file-row">
+            <div>
+              <span class="file-name">apploja_setup.exe</span>
+              <span class="file-type">Versão legada · Requer Microsoft Access</span>
             </div>
             <span class="windows-badge">Windows</span>
           </div>
         </aside>
       </main>
 
-      <section class="section" id="requisitos" aria-labelledby="requirements-title">
-        <h2 id="requirements-title">Requisitos importantes</h2>
+      <section class="section" id="requisitos-access" aria-labelledby="requirements-title">
+        <h2 id="requirements-title">Requisitos da versão Access</h2>
         <p class="section-intro">
-          Para o APPLoja Desktop funcionar, o computador precisa ter o <strong>Microsoft Access</strong> e o <strong>Microsoft Excel</strong> instalados. Os dois programas fazem parte do pacote Microsoft Office.
+          Para a versão clássica do APPLoja funcionar, o computador precisa ter o <strong>Microsoft Access</strong> e o <strong>Microsoft Excel</strong> instalados. Os dois programas fazem parte do pacote Microsoft Office.
         </p>
 
         <div class="requirements-grid">
           <div class="requirement">
             <strong>Microsoft Access</strong>
-            <span>Necessário para abrir e executar os recursos do sistema APPLoja Desktop.</span>
+            <span>Necessário para executar a versão clássica do APPLoja.</span>
           </div>
           <div class="requirement">
             <strong>Microsoft Excel</strong>
@@ -662,23 +723,23 @@
         <div class="office-box">
           <h3>Não tem Access e Excel instalados?</h3>
           <p>
-            Use o link abaixo para acessar o arquivo do <strong>Microsoft Office 2010</strong> informado para instalação. Se o computador já possui Access e Excel compatíveis, não é necessário instalar o Office novamente.
+            Se o computador ainda não possui Access e Excel compatíveis, consulte o arquivo histórico do <strong>Microsoft Office 2010</strong> disponibilizado abaixo. Caso já tenha os programas compatíveis instalados, não é necessário reinstalar o Office.
           </p>
           <div class="office-actions">
             <a class="button button-secondary" href="https://drive.google.com/file/d/1o8r5WnKzgy9QcDrv50L8JMQXf1abercs/view" target="_blank" rel="noopener noreferrer">
               Abrir download do Office 2010
             </a>
-            <span class="office-note">O Microsoft Office é um produto da Microsoft e deve ser utilizado com uma licença válida.</span>
+            <span class="office-note">O Office 2010 não recebe atualizações de segurança. Utilize somente software de origem confiável e com licença válida.</span>
           </div>
         </div>
       </section>
 
-      <section class="section" id="como-instalar" aria-labelledby="install-title">
+      <section class="section" id="como-instalar-access" aria-labelledby="install-title">
         <h2 id="install-title">Como instalar</h2>
         <div class="steps-grid">
           <div class="step">
             <span class="step-number">1</span>
-            <span>Confirme se o computador possui <strong>Microsoft Access e Excel</strong>. Caso não possua, instale primeiro o Office.</span>
+            <span>Verifique se o computador já possui <strong>Microsoft Access e Excel</strong> compatíveis. Se necessário, prepare esses programas antes de instalar o APPLoja Access.</span>
           </div>
           <div class="step">
             <span class="step-number">2</span>
@@ -686,7 +747,7 @@
           </div>
           <div class="step">
             <span class="step-number">3</span>
-            <span>Siga as etapas apresentadas pelo instalador para concluir a instalação do APPLoja.</span>
+            <span>Siga as etapas do instalador para concluir a instalação da versão Access.</span>
           </div>
         </div>
       </section>
@@ -792,7 +853,8 @@
         panel.hidden = panel.id !== `panel-${name}`;
       });
 
-      history.replaceState(null, '', name === 'remoto' ? '#acesso-remoto' : '#');
+      const hashes = { apploja: '#', access: '#versao-access', remoto: '#acesso-remoto' };
+      history.replaceState(null, '', hashes[name] || '#');
     }
 
     tabButtons.forEach((button) => {
@@ -811,6 +873,8 @@
 
     if (window.location.hash === '#acesso-remoto') {
       activateTab('remoto');
+    } else if (['#versao-access', '#requisitos-access', '#como-instalar-access'].includes(window.location.hash)) {
+      activateTab('access');
     }
 
     document.getElementById('year').textContent = new Date().getFullYear();
