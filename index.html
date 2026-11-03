@@ -571,6 +571,75 @@
       background: var(--remote-soft);
     }
 
+    .install-dialog {
+      width: min(980px, calc(100% - 32px));
+      max-height: calc(100vh - 32px);
+      padding: 0;
+      border: 0;
+      border-radius: 22px;
+      background: #fff;
+      box-shadow: 0 30px 80px rgba(15, 23, 42, 0.35);
+    }
+
+    .install-dialog::backdrop {
+      background: rgba(15, 23, 42, 0.6);
+      backdrop-filter: blur(3px);
+    }
+
+    .install-dialog-head {
+      position: sticky;
+      top: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--border);
+      background: #fff;
+    }
+
+    .install-dialog-head h2 {
+      margin: 0;
+      font-size: 18px;
+      letter-spacing: -0.02em;
+    }
+
+    .install-dialog-head p {
+      margin: 4px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .install-dialog-close {
+      flex: none;
+      width: 40px;
+      height: 40px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: #fff;
+      color: #475569;
+      font-size: 22px;
+      line-height: 1;
+      cursor: pointer;
+    }
+
+    .install-dialog-close:hover { background: var(--surface-soft); }
+
+    .install-dialog-body { padding: 16px 20px 20px; }
+
+    .install-dialog-body img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+    }
+
+    .install-dialog-foot {
+      margin-top: 16px;
+      display: flex;
+      justify-content: flex-end;
+    }
+
     .footer { border-top: 1px solid rgba(226, 232, 240, 0.85); margin-top: auto; }
 
     .footer-inner {
@@ -852,7 +921,37 @@
     </footer>
   </div>
 
+  <dialog class="install-dialog" id="install-dialog" aria-labelledby="install-dialog-title">
+    <div class="install-dialog-head">
+      <div>
+        <h2 id="install-dialog-title">Seu download começou! Veja como instalar</h2>
+        <p>Quando o arquivo terminar de baixar, abra o instalador e siga estes passos.</p>
+      </div>
+      <button class="install-dialog-close" type="button" data-close-dialog aria-label="Fechar">&times;</button>
+    </div>
+    <div class="install-dialog-body">
+      <img src="assets/como-instalar.webp" alt="Passo 1: clique em Mais informações. Passo 2: clique em Executar assim mesmo. Passo 3: selecione Apenas para mim e clique em Próximo. Passo 4: confira a pasta e clique em Instalar." width="1389" height="1132" loading="lazy" />
+      <div class="install-dialog-foot">
+        <button class="button button-primary" type="button" data-close-dialog>Entendi</button>
+      </div>
+    </div>
+  </dialog>
+
   <script>
+    const installDialog = document.getElementById('install-dialog');
+    document.querySelectorAll('.button-beta').forEach((link) => {
+      link.addEventListener('click', () => {
+        // O download segue normalmente; o guia de instalação abre logo em seguida.
+        setTimeout(() => installDialog.showModal?.(), 150);
+      });
+    });
+    installDialog.querySelectorAll('[data-close-dialog]').forEach((button) => {
+      button.addEventListener('click', () => installDialog.close());
+    });
+    installDialog.addEventListener('click', (event) => {
+      if (event.target === installDialog) installDialog.close();
+    });
+
     const tabButtons = document.querySelectorAll('[role="tab"]');
     const tabPanels = document.querySelectorAll('[role="tabpanel"]');
 
