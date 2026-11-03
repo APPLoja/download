@@ -663,7 +663,7 @@
 
         <aside class="download-card" aria-label="Informações da nova versão">
           <div class="visual video">
-            <iframe src="https://www.youtube-nocookie.com/embed/6p-K-KwAiNM?rel=0" title="Vídeo de apresentação do APPLoja Desktop" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <iframe src="https://www.youtube-nocookie.com/embed/6p-K-KwAiNM?rel=0&amp;enablejsapi=1" title="Vídeo de apresentação do APPLoja Desktop" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
           </div>
           <p class="card-kicker">Nova versão para Windows · Beta</p>
           <h2 class="card-title">APPLoja Desktop</h2>
@@ -865,6 +865,11 @@
 
       tabPanels.forEach((panel) => {
         panel.hidden = panel.id !== `panel-${name}`;
+        if (panel.hidden) {
+          panel.querySelectorAll('iframe[src*="youtube"]').forEach((frame) => {
+            frame.contentWindow?.postMessage(JSON.stringify({ event: 'command', func: 'pauseVideo', args: [] }), '*');
+          });
+        }
       });
 
       const hashes = { apploja: '#', access: '#versao-access', remoto: '#acesso-remoto' };
